@@ -1,0 +1,48 @@
+$ behave
+Feature: Can I Send Email? # features/email.feature:1
+  Send emails using To, Cc and/or Bcc address lines
+  Scenario: Send a test email using To address line  # features/email.feature:4
+    Given a valid email address                      # features/steps/email.py:3 0.000s
+    When I select compose                            # features/steps/email.py:8 0.000s
+    When I set subject to "Test"                     # features/steps/email.py:12 0.000s
+    When I set body to "Hello"                       # features/steps/email.py:16 0.000s
+    When I set To address line a valid email address # features/steps/email.py:20 0.000s
+    When I send email to email address               # features/steps/email.py:32 0.000s
+    Then I can see email in the Sent outbox          # features/steps/email.py:36 0.000s
+    Then I can see "Test" in subject                 # features/steps/email.py:40 0.000s
+    Then I can see "Hello" in body                   # features/steps/email.py:44 0.000s
+
+  Scenario: Send a test email using Cc address line  # features/email.feature:15
+    Given a valid email address                      # features/steps/email.py:3 0.000s
+    When I select compose                            # features/steps/email.py:8 0.000s
+    When I set subject to "Test"                     # features/steps/email.py:12 0.000s
+    When I set body to "Hello"                       # features/steps/email.py:16 0.000s
+    When I set Cc address line a valid email address # features/steps/email.py:24 0.000s
+    When I send email to email address               # features/steps/email.py:32 0.000s
+    Then I can see email in the Sent outbox          # features/steps/email.py:36 0.000s
+    Then I can see "Test" in subject                 # features/steps/email.py:40 0.000s
+    Then I can see "Hello" in body                   # features/steps/email.py:44 0.000s
+
+  Scenario: Send a test email using Bcc address line  # features/email.feature:26
+    Given a valid email address                       # features/steps/email.py:3 0.000s
+    When I select compose                             # features/steps/email.py:8 0.000s
+    When I set subject to "Test"                      # features/steps/email.py:12 0.000s
+    When I set body to "Hello"                        # features/steps/email.py:16 0.000s
+    When I set Bcc address line a valid email address # features/steps/email.py:28 0.000s
+    When I send email to email address                # features/steps/email.py:32 0.000s
+    Then I can see email in the Sent outbox           # features/steps/email.py:36 0.000s
+    Then I can see "Test" in subject                  # features/steps/email.py:40 0.000s
+    Then I can see "Hello" in body                    # features/steps/email.py:44 0.000s
+
+Feature: Can I Identify Spam? # features/spam.feature:1
+  All email addresses identified as spam by the user shall be automatically sent to the spam folder
+  Scenario: Add an email address to blocked addresses  # features/spam.feature:4
+    Given a blocked address                            # features/steps/spam.py:3 0.000s
+    When I set blocked address to blocked addresses    # features/steps/spam.py:8 0.000s
+    When I send email from blocked address             # features/steps/spam.py:12 0.000s
+    Then I can see blocked email in the Spam folder    # features/steps/spam.py:16 0.000s
+
+2 features passed, 0 failed, 0 skipped
+4 scenarios passed, 0 failed, 0 skipped
+31 steps passed, 0 failed, 0 skipped, 0 undefined
+Took 0m0.003s

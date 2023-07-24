@@ -1,0 +1,41 @@
+Test Procedure for our Email Application System
+
+Test Approach:
+  We will test the UI using a selenium based approach using chromedriver.
+  We will validate with connections to backend application and backend resourcea (white box system).
+
+Assumptions:
+  1. An email application system has been created and is operational.
+  2. The Email Application System consists of an Email UI, a Backend Application, an In-Bound
+  Mail Server, a Personal Database and an Out Bound Mail Server.
+  3. We have created a validated user with a valid username and password.
+  4. Connections are available to the backend application and backend resources.
+
+Requirements to be tested:
+  Req_159: Email shall be sent to any valid email address from To, Cc, and/or Bcc address lines
+  Req_42: All email addresses identified as spam by the user shall be automatically sent to the
+spam folder
+
+Req_159 Test Cases:
+  Test Case 1: Login to email application
+             Validate Inbox, Sent (outbox) and Spam folders
+  Test Case 2: Click on Compose an email
+             Validate To, Subject, CC/Bcc address lines
+  Test Case 3: Send an email using To address line
+             Validate success email sent.
+  Test Case 4: Send an email using Cc address line
+             Validate success email sent.
+  Test Case 5: Send an email using Bcc address line
+             Validate success email sent.
+  Test Case 6: Click on Sent (outbox) 
+             Validate the 3 emails sent
+
+Req_42 Test Cases:
+  Test Case 7: Click on Spam folder
+             Validate 0..N emails in folder
+  Test Case 8: Click on Settings > Blocked Addresses
+             Add an email address that you which to test from
+  Test Case 9: <Outside of this application> Send an email from the block address
+             Click on Spam folder
+             Validate the email from the blocked addressee
+
