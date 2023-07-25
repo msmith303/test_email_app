@@ -1,4 +1,4 @@
-outside_email_test_app
+Outside Analytics testing
 
 This python module will test the Outside Analytics email application.  See the test procedure document for test cases, requirements, test approach and assumptions.
 
@@ -11,9 +11,9 @@ Setup:
  4. pyenv shell <my_shell_name>
  5. pip install behave
  6. pip install selenium
- 7. git clone msmith303/test_email_app
+ 7. git clone https://github.com/msmith303/test_email_app
 
-To run the tests:
+To run the tests using the behave cli command:
  # behave
 
 Future work:
@@ -26,4 +26,43 @@ Future work:
 
 Related documents:
  o https://behave.readthedocs.io/en/latest/
- o Requirments Documentation [TBD] 
+ o Requirements Documentation link
+
+= = = = = = = = = = = = = = = = = = = = = =
+Feature: email.feature
+
+Feature: Can I Send Email?
+  Send emails using To, Cc and/or Bcc address lines
+
+  Scenario: Send a test email using To address line
+    Given a valid email address
+    When I select compose
+    When I set subject to "Test"
+    When I set body to "Hello"
+    When I set To address line a valid email address
+    When I send email to email address
+    Then I can see email in the Sent outbox
+    Then I can see "Test" in subject
+    Then I can see "Hello" in body
+
+  Scenario: Send a test email using Cc address line
+    Given a valid email address
+    When I select compose
+    When I set subject to "Test"
+    When I set body to "Hello"
+    When I set Cc address line a valid email address
+    When I send email to email address
+    Then I can see email in the Sent outbox
+    Then I can see "Test" in subject
+    Then I can see "Hello" in body
+
+  Scenario: Send a test email using Bcc address line
+    Given a valid email address
+    When I select compose
+    When I set subject to "Test"
+    When I set body to "Hello"
+    When I set Bcc address line a valid email address
+    When I send email to email address
+    Then I can see email in the Sent outbox
+    Then I can see "Test" in subject
+    Then I can see "Hello" in body
