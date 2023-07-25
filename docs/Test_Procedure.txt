@@ -39,3 +39,13 @@ Req_42 Test Cases:
              Click on Spam folder
              Validate the email from the blocked addressee
 
+Future work:
+ 1. Complete environment.py for before_all and after cleanup.
+ 2. Start browser at beginning of each feature (E2E testing)
+ 3. Implement python utility classes for common code when accessing pages.
+ 4. Implement tables to feature files.
+ 5. From DOM, use element ids to validate.
+ 6. Validate back-end resources.
+ 7. Add tags (smoke, functional, all)
+ 8. Validate failures in logs.
+ 9. Write more psuedo code and implement steps.
